@@ -12,7 +12,7 @@
 	<artifactId>hubens</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>hubens</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Uma aplicação web de streaming de vídeos utilizando as tecnologias Spring Framework, Spring WebFlux, Spring Boot e Spring Data. Requisito da fase 4 da pós graduação em Desenvolvimento e Arquitetura Java da Fiap.</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
@@ -41,6 +41,11 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-mongodb-reactive</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-validation</artifactId>
 		</dependency>
 	</dependencies>
 
