@@ -58,7 +58,7 @@ public class VideoController {
                 .map(fetchedVideo -> {
                     var video = req.toEntity();
                     video.setId(id);
-                    video.setDataPublicação(fetchedVideo.getDataPublicação());
+                    video.setDataPublicacao(fetchedVideo.getDataPublicacao());
                     return video;
                 }).flatMap(videoRepository::save);
     }

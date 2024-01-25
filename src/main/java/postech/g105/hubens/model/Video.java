@@ -12,22 +12,22 @@ public class Video {
     @Id
     private String id;
 
-    private String titulo;
-    private String descrição;
-    private String url;
-
     @CreatedDate
-    private Date dataPublicação;
+    private Date dataPublicacao;
+
+    private String titulo;
+    private String descricao;
+    private String url;
 
     public Video() {
     }
 
-    public Video(String id, String titulo, String descrição, String url, Date dataPublicação) {
+    public Video(String id, String titulo, String descricao, String url, Date dataPublicacao) {
         this.id = id;
         this.titulo = titulo;
-        this.descrição = descrição;
+        this.descricao = descricao;
         this.url = url;
-        this.dataPublicação = dataPublicação;
+        this.dataPublicacao = dataPublicacao;
     }
 
     public String getId() {
@@ -46,12 +46,12 @@ public class Video {
         this.titulo = titulo;
     }
 
-    public String getDescrição() {
-        return descrição;
+    public String getDescricao() {
+        return descricao;
     }
 
-    public void setDescrição(String descrição) {
-        this.descrição = descrição;
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 
     public String getUrl() {
@@ -62,11 +62,11 @@ public class Video {
         this.url = url;
     }
 
-    public Date getDataPublicação() {
-        return dataPublicação;
+    public Date getDataPublicacao() {
+        return dataPublicacao;
     }
 
-    public void setDataPublicação(Date dataPublicação) {
-        this.dataPublicação = dataPublicação;
+    public void setDataPublicacao(Date dataPublicacao) {
+        this.dataPublicacao = dataPublicacao;
     }
 }
