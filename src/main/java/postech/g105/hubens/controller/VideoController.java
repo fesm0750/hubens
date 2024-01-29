@@ -1,11 +1,11 @@
 package postech.g105.hubens.controller;
 
-import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -13,11 +13,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import jakarta.validation.Valid;
 import postech.g105.hubens.controller.request.VideoRequest;
+import postech.g105.hubens.exceptions.VideoNotFoundException;
 import postech.g105.hubens.model.Video;
 import postech.g105.hubens.repository.VideoRepository;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-import org.springframework.web.bind.annotation.PutMapping;
 
 @RestController
 @RequestMapping("/video")
@@ -49,16 +49,19 @@ public class VideoController {
         return videoRepository.save(req.toEntity());
     }
 
-    // Atualiza a entrada se a mesma já se encontra presente no banco de dados.
-    // Caso contrário, lança exceção.
+    /**
+     * Atualiza o registro se o mesmo já se encontra presente no DB, lança exceção caso contrário.
+     * @param id
+     * @param req deve conter os campos `Título` e `Descrição`.
+     * @return Mono com a entidade video atualizada.
+     */
     @PutMapping("/{id}")
     public Mono<Video> atualizar(@PathVariable String id, @RequestBody @Valid VideoRequest req) {
         return videoRepository.findById(id)
-                .switchIfEmpty(Mono.error(new NotFoundException()))
-                .map(fetchedVideo -> {
-                    var video = req.toEntity();
-                    video.setId(id);
-                    video.setDataPublicacao(fetchedVideo.getDataPublicacao());
+                .switchIfEmpty(Mono.error(new VideoNotFoundException()))
+                .map(video -> {
+                    video.setTitulo(req.titulo());
+                    video.setDescricao(req.descricao());
                     return video;
                 }).flatMap(videoRepository::save);
     }
