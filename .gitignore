@@ -34,3 +34,6 @@ build/
 
 ### Mongo ###
 mongo/data_db/
+
+### Video Storage ###
+video_storage/
