@@ -15,9 +15,8 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @RestController
-
-public class VideoStorageController {
-    @GetMapping(value = "/video_storage/{id}")
+public class VideoStreamController {
+    @GetMapping(value = "/video_stream/{id}")
     public Flux<DataBuffer> fetch(@PathVariable String id) {
         Path path = ApplicationConstants.VIDEO_STORAGE_PATH.resolve(id);
         return DataBufferUtils.read(path, new DefaultDataBufferFactory(), 4096)

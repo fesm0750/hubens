@@ -19,6 +19,6 @@ public record VideoResponse(String id, String titulo, String descricao, LocalDat
     }
 
     private static String url(String id) {
-        return ApplicationConstants.BASE_URL + ApplicationConstants.VIDEO_STORAGE_STRING + id;
+        return ApplicationConstants.VIDEO_STREAM_URL + id;
     }
 }
