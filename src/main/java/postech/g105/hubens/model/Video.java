@@ -7,6 +7,8 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import postech.g105.hubens.model.enums.VideoCategoria;
+
 @Document(collection = "videos")
 public class Video {
 
@@ -18,6 +20,7 @@ public class Video {
 
     private String titulo;
     private String descricao;
+    private VideoCategoria categoria;
 
     // Constants, schema, field names
     @Transient
@@ -26,11 +29,12 @@ public class Video {
     public Video() {
     }
 
-    public Video(String id, String titulo, String descricao, LocalDate dataPublicacao) {
+    public Video(String id, String titulo, String descricao, LocalDate dataPublicacao, VideoCategoria categoria) {
         this.id = id;
         this.titulo = titulo;
         this.descricao = descricao;
         this.dataPublicacao = dataPublicacao;
+        this.categoria = categoria;
     }
 
     public String getId() {
@@ -64,4 +68,13 @@ public class Video {
     public void setDataPublicacao(LocalDate dataPublicacao) {
         this.dataPublicacao = dataPublicacao;
     }
+
+    public VideoCategoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(VideoCategoria categoria) {
+        this.categoria = categoria;
+    }
+
 }
