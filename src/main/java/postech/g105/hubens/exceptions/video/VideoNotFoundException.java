@@ -1,4 +1,4 @@
-package postech.g105.hubens.exceptions;
+package postech.g105.hubens.exceptions.video;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

@@ -1,9 +1,10 @@
 package postech.g105.hubens.model;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "videos")
@@ -13,20 +14,22 @@ public class Video {
     private String id;
 
     @CreatedDate
-    private Date dataPublicacao;
+    private LocalDate dataPublicacao;
 
     private String titulo;
     private String descricao;
-    private String url;
+
+    // Constants, schema, field names
+    @Transient
+    public static final String CAMPO_DATA_PUBLICACAO = "dataPublicacao";
 
     public Video() {
     }
 
-    public Video(String id, String titulo, String descricao, String url, Date dataPublicacao) {
+    public Video(String id, String titulo, String descricao, LocalDate dataPublicacao) {
         this.id = id;
         this.titulo = titulo;
         this.descricao = descricao;
-        this.url = url;
         this.dataPublicacao = dataPublicacao;
     }
 
@@ -54,19 +57,11 @@ public class Video {
         this.descricao = descricao;
     }
 
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
-    public Date getDataPublicacao() {
+    public LocalDate getDataPublicacao() {
         return dataPublicacao;
     }
 
-    public void setDataPublicacao(Date dataPublicacao) {
+    public void setDataPublicacao(LocalDate dataPublicacao) {
         this.dataPublicacao = dataPublicacao;
     }
 }
