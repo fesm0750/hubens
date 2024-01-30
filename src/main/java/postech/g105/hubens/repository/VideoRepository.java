@@ -9,7 +9,9 @@ import org.springframework.stereotype.Repository;
 
 import postech.g105.hubens.model.video.Video;
 import postech.g105.hubens.model.video.VideoCategoria;
+import postech.g105.hubens.model.video.VideoCategoriaDTO;
 import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 @Repository
 public interface VideoRepository extends ReactiveMongoRepository<Video, String> {
@@ -21,4 +23,6 @@ public interface VideoRepository extends ReactiveMongoRepository<Video, String> 
     + "] }")
     Flux<Video> findFilteredAndPaged(String titulo, VideoCategoria categoria, LocalDate dataPublicacaoInicio, LocalDate dataPublicacaoFim, Pageable pageable);
 
+    @Query(value="{ 'id' : ?0 }",fields="{ 'categoria' : 1 }")
+    Mono<VideoCategoriaDTO> findCategoriaById(String id);
 }
