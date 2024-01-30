@@ -22,7 +22,7 @@ import postech.g105.hubens.config.ApplicationConstants;
 import postech.g105.hubens.controller.request.VideoRequest;
 import postech.g105.hubens.controller.response.VideoResponse;
 import postech.g105.hubens.exceptions.video.VideoNotFoundException;
-import postech.g105.hubens.model.enums.VideoCategoria;
+import postech.g105.hubens.model.video.VideoCategoria;
 import postech.g105.hubens.repository.VideoRepository;
 import postech.g105.hubens.service.VideoService;
 import reactor.core.publisher.Flux;
