@@ -80,19 +80,17 @@ public class VideoController {
         return videoRepository.findById(id).map(video -> new VideoResponse(video));
     }
 
+
     @PostMapping
     public Mono<VideoResponse> cadastrar(
             @RequestPart(value = "body") @Valid VideoRequest req,
-            @RequestPart(value = "file", required = true) Mono<FilePart> file) {
+            @RequestPart(value = "file", required = true) Mono<FilePart> filepart) {
 
-        // save video entity to database
-        var videoEntry = videoRepository.save(req.toEntity());
-
-        // save video to storage and
-        return videoEntry
-                .flatMap(video -> file
-                        .flatMap(fp -> fp.transferTo(ApplicationConstants.VIDEO_STORAGE_PATH.resolve(video.getId())))
-                        .then(Mono.just(new VideoResponse(video))));
+        // Se filepart presente, salva o registro no banco de dados e depois o arquivo
+        // no armazenamento.
+        return filepart.flatMap(fp -> videoRepository.save(req.toEntity())
+                .flatMap(video -> fp.transferTo(ApplicationConstants.VIDEO_STORAGE_PATH.resolve(video.getId()))
+                        .then(Mono.just(new VideoResponse(video)))));
     }
 
     /**
