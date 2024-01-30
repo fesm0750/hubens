@@ -22,7 +22,6 @@ import postech.g105.hubens.config.ApplicationConstants;
 import postech.g105.hubens.controller.request.VideoRequest;
 import postech.g105.hubens.controller.response.VideoResponse;
 import postech.g105.hubens.exceptions.video.VideoNotFoundException;
-import postech.g105.hubens.model.Video;
 import postech.g105.hubens.repository.VideoRepository;
 import postech.g105.hubens.service.VideoService;
 import reactor.core.publisher.Flux;
@@ -77,14 +76,15 @@ public class VideoController {
     }
 
     @GetMapping("/{id}")
-    public Mono<Video> buscarPorId(@PathVariable String id) {
-        return videoRepository.findById(id);
+    public Mono<VideoResponse> buscarPorId(@PathVariable String id) {
+        return videoRepository.findById(id).map(video -> new VideoResponse(video));
     }
 
     @PostMapping
-    public Mono<?> cadastrar(
+    public Mono<VideoResponse> cadastrar(
             @RequestPart(value = "body") @Valid VideoRequest req,
             @RequestPart(value = "file", required = true) Mono<FilePart> file) {
+
         // save video entity to database
         var videoEntry = videoRepository.save(req.toEntity());
 
@@ -101,17 +101,17 @@ public class VideoController {
      * 
      * @param id
      * @param req deve conter os campos `Título` e `Descrição`.
-     * @return Mono com a entidade video atualizada.
+     * @return Mono com uma reponse de video atualizada.
      */
     @PutMapping("/{id}")
-    public Mono<Video> atualizar(@PathVariable String id, @RequestBody @Valid VideoRequest req) {
+    public Mono<VideoResponse> atualizar(@PathVariable String id, @RequestBody @Valid VideoRequest req) {
         return videoRepository.findById(id)
                 .switchIfEmpty(Mono.error(new VideoNotFoundException()))
                 .map(video -> {
                     video.setTitulo(req.titulo());
                     video.setDescricao(req.descricao());
                     return video;
-                }).flatMap(videoRepository::save);
+                }).flatMap(videoRepository::save).map(video -> new VideoResponse(video));
     }
 
     /**
