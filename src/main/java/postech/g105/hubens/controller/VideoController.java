@@ -22,6 +22,7 @@ import postech.g105.hubens.config.ApplicationConstants;
 import postech.g105.hubens.controller.request.VideoRequest;
 import postech.g105.hubens.controller.response.VideoResponse;
 import postech.g105.hubens.exceptions.video.VideoNotFoundException;
+import postech.g105.hubens.model.enums.VideoCategoria;
 import postech.g105.hubens.repository.VideoRepository;
 import postech.g105.hubens.service.VideoService;
 import reactor.core.publisher.Flux;
@@ -68,10 +69,11 @@ public class VideoController {
             @RequestParam(defaultValue = DEFAULT_PAGE_SIZE) Integer size,
             @RequestParam(defaultValue = ORDER_DESCENDING) Sort.Direction orderByDate,
             @RequestParam(defaultValue = EMPTY_STRING) String titulo,
+            @RequestParam(required = false) VideoCategoria categoria,
             @RequestParam(required = false) LocalDate dataInicio,
             @RequestParam(required = false) LocalDate dataFim) {
 
-        return videoService.buscar(page, size, orderByDate, titulo, dataInicio, dataFim)
+        return videoService.buscar(page, size, orderByDate, titulo, categoria, dataInicio, dataFim)
                 .map(video -> new VideoResponse(video));
     }
 
@@ -79,7 +81,6 @@ public class VideoController {
     public Mono<VideoResponse> buscarPorId(@PathVariable String id) {
         return videoRepository.findById(id).map(video -> new VideoResponse(video));
     }
-
 
     @PostMapping
     public Mono<VideoResponse> cadastrar(
