@@ -7,6 +7,8 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import postech.g105.hubens.config.ApplicationConstants;
+
 @Document(collection = "videos")
 public class Video {
 
@@ -73,6 +75,10 @@ public class Video {
 
     public void setCategoria(VideoCategoria categoria) {
         this.categoria = categoria;
+    }
+
+    public String url() {
+        return ApplicationConstants.VIDEO_STREAM_URL + this.getId();
     }
 
 }
