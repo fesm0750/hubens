@@ -1,6 +1,7 @@
 package postech.g105.hubens.repository;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.mongodb.repository.Query;
@@ -29,4 +30,7 @@ public interface VideoRepository extends ReactiveMongoRepository<Video, String> 
     // Retorna a categoria de um video
     @Query(value = "{ 'id' : ?0 }", fields = "{ 'categoria' : 1 }")
     Mono<VideoCategoriaDTO> findCategoriaById(String id);
+
+    // Retorna videos por lista de IDs
+    Flux<Video> findAllByIdIn(List<String> ids);
 }
