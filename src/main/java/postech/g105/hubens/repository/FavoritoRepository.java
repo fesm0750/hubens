@@ -31,7 +31,7 @@ public interface FavoritoRepository extends ReactiveMongoRepository<Favorito, Fa
             "{$group: {_id: $categoria, total: {$sum: 1}}}",
             "{$project: {categoria: '$_id', total: 1}}",
             "{$sort: {total: -1}}",
-            "{$limit: ?3}"
+            "{$limit: ?1}"
     })
     Flux<VideoCategoriaDTO> findCategoriasFavoritasByUsuario(String usuarioId, Integer limite);
 
