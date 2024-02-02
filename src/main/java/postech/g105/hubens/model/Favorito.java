@@ -1,4 +1,4 @@
-package postech.g105.hubens.model.favorito;
+package postech.g105.hubens.model;
 
 import java.time.LocalDateTime;
 
@@ -8,7 +8,9 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 import org.springframework.data.mongodb.core.mapping.FieldType;
 
-import postech.g105.hubens.model.video.VideoCategoria;
+import jakarta.validation.constraints.NotNull;
+import postech.g105.hubens.model.enums.VideoCategoria;
+import postech.g105.hubens.model.id.FavoritoId;
 
 @Document(collection = "favoritos")
 public class Favorito {

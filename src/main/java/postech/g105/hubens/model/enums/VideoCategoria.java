@@ -1,4 +1,4 @@
-package postech.g105.hubens.model.video;
+package postech.g105.hubens.model.enums;
 
 public enum VideoCategoria {
 

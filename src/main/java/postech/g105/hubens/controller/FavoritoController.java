@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import postech.g105.hubens.model.favorito.Favorito;
-import postech.g105.hubens.model.favorito.FavoritoId;
-import postech.g105.hubens.model.video.VideoCategoriaDTO;
+import postech.g105.hubens.model.Favorito;
+import postech.g105.hubens.model.dto.VideoCategoriaDTO;
+import postech.g105.hubens.model.id.FavoritoId;
 import postech.g105.hubens.repository.FavoritoRepository;
 import postech.g105.hubens.repository.VideoRepository;
 import reactor.core.publisher.Mono;

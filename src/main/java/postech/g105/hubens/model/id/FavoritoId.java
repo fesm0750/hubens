@@ -1,4 +1,4 @@
-package postech.g105.hubens.model.favorito;
+package postech.g105.hubens.model.id;
 
 import java.io.Serializable;
 import java.util.Objects;

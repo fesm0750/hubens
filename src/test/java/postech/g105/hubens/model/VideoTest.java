@@ -6,8 +6,7 @@ import java.time.LocalDate;
 
 import org.junit.jupiter.api.Test;
 
-import postech.g105.hubens.model.video.Video;
-import postech.g105.hubens.model.video.VideoCategoria;
+import postech.g105.hubens.model.enums.VideoCategoria;
 
 public class VideoTest {
 

@@ -1,4 +1,4 @@
-package postech.g105.hubens.model.video;
+package postech.g105.hubens.model;
 
 import java.time.LocalDate;
 
@@ -8,6 +8,7 @@ import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import postech.g105.hubens.config.ApplicationConstants;
+import postech.g105.hubens.model.enums.VideoCategoria;
 
 @Document(collection = "videos")
 public class Video {

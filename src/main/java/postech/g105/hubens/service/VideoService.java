@@ -11,8 +11,8 @@ import org.springframework.stereotype.Service;
 
 import postech.g105.hubens.config.ApplicationConstants;
 import postech.g105.hubens.exceptions.video.VideoErroAoExcluirException;
-import postech.g105.hubens.model.video.Video;
-import postech.g105.hubens.model.video.VideoCategoria;
+import postech.g105.hubens.model.Video;
+import postech.g105.hubens.model.enums.VideoCategoria;
 import postech.g105.hubens.repository.VideoRepository;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;

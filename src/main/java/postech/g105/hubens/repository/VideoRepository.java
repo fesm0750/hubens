@@ -8,9 +8,9 @@ import org.springframework.data.mongodb.repository.Query;
 import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
 import org.springframework.stereotype.Repository;
 
-import postech.g105.hubens.model.video.Video;
-import postech.g105.hubens.model.video.VideoCategoria;
-import postech.g105.hubens.model.video.VideoCategoriaDTO;
+import postech.g105.hubens.model.Video;
+import postech.g105.hubens.model.dto.VideoCategoriaDTO;
+import postech.g105.hubens.model.enums.VideoCategoria;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 

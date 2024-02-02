@@ -5,9 +5,9 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import postech.g105.hubens.model.video.Video;
-import postech.g105.hubens.model.video.VideoCategoria;
-import postech.g105.hubens.model.video.VideoCategoriaDTO;
+import postech.g105.hubens.model.Video;
+import postech.g105.hubens.model.dto.VideoCategoriaDTO;
+import postech.g105.hubens.model.enums.VideoCategoria;
 import postech.g105.hubens.repository.FavoritoRepository;
 import postech.g105.hubens.repository.VideoRepository;
 import reactor.core.publisher.Flux;

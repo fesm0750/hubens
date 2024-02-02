@@ -21,8 +21,8 @@ import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 import org.testcontainers.utility.DockerImageName;
 
-import postech.g105.hubens.model.video.Video;
-import postech.g105.hubens.model.video.VideoCategoria;
+import postech.g105.hubens.model.Video;
+import postech.g105.hubens.model.enums.VideoCategoria;
 import reactor.test.StepVerifier;
 
 @Testcontainers

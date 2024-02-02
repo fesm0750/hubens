@@ -6,9 +6,8 @@ import java.time.LocalDateTime;
 
 import org.junit.jupiter.api.Test;
 
-import postech.g105.hubens.model.favorito.Favorito;
-import postech.g105.hubens.model.favorito.FavoritoId;
-import postech.g105.hubens.model.video.VideoCategoria;
+import postech.g105.hubens.model.enums.VideoCategoria;
+import postech.g105.hubens.model.id.FavoritoId;
 
 public class FavoritoTest {
     
