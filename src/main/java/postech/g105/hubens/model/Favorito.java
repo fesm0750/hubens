@@ -18,10 +18,13 @@ public class Favorito {
     @Id
     FavoritoId id;
 
+    @Indexed
+    @NotNull
     @Field(targetType = FieldType.DATE_TIME)
     LocalDateTime timestamp;
 
     @Indexed
+    @NotNull
     VideoCategoria categoria;
 
     public Favorito() {

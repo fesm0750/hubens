@@ -7,6 +7,8 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import postech.g105.hubens.config.ApplicationConstants;
 import postech.g105.hubens.model.enums.VideoCategoria;
 
@@ -19,8 +21,13 @@ public class Video {
     @CreatedDate
     private LocalDate dataPublicacao;
 
+    @NotBlank(message = "Título não pode ser vazio.")
     private String titulo;
+
+    @NotBlank(message = "Descrição não pode ser vazia.")
     private String descricao;
+
+    @NotNull(message = "Categoria precisa ser informada.")
     private VideoCategoria categoria;
 
     // Constants, schema, field names

@@ -3,11 +3,15 @@ package postech.g105.hubens.model;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import jakarta.validation.constraints.NotBlank;
+
 @Document(collection = "usuarios")
 public class Usuario {
     
     @Id
     private String id;
+
+    @NotBlank(message = "Username não pode ser vazio.")
     private String username;
 
     public Usuario() {

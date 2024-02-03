@@ -3,9 +3,12 @@ package postech.g105.hubens.model;
 import java.time.LocalDateTime;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 import org.springframework.data.mongodb.core.mapping.FieldType;
+
+import jakarta.validation.constraints.NotNull;
 
 @Document(collection = "acessos")
 public class Acesso {
@@ -13,8 +16,11 @@ public class Acesso {
     @Id
     String id;
 
+    @NotNull
     String video_id;
 
+    @Indexed
+    @NotNull
     @Field(targetType = FieldType.DATE_TIME)
     LocalDateTime timestamp;
     
