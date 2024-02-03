@@ -2,6 +2,7 @@ package postech.g105.hubens.controller;
 
 import java.time.LocalDateTime;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -47,7 +48,7 @@ public class FavoritoController {
                 });
             }
             return Mono.empty();
-        }).then(Mono.just(ResponseEntity.ok().build()));
+        }).then(Mono.just(ResponseEntity.status(HttpStatus.CREATED).build()));
     }
 
     @DeleteMapping("/{usuarioId}/{videoId}")

@@ -79,7 +79,9 @@ public class VideoController {
 
     @GetMapping("/{id}")
     public Mono<VideoResponse> buscarPorId(@PathVariable String id) {
-        return videoRepository.findById(id).map(video -> new VideoResponse(video));
+        return videoRepository.findById(id)
+                .switchIfEmpty(Mono.error(new VideoNotFoundException()))
+                .map(video -> new VideoResponse(video));
     }
 
     @PostMapping
